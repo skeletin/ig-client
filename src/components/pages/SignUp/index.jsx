@@ -13,7 +13,7 @@ const SignUp = () => {
     fullName: "",
     username: "",
     password: "",
-    birthdate: {
+    birthDate: {
       year: "",
       month: "",
       day: "",

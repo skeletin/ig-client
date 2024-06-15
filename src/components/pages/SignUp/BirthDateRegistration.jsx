@@ -37,8 +37,8 @@ const BirthDateRegistration = () => {
     setMonth(value);
     setNewUser((prev) => ({
       ...prev,
-      birthdate: {
-        ...prev.birthdate,
+      birthDate: {
+        ...prev.birthDate,
         [name]: value,
       },
     }));
@@ -48,8 +48,8 @@ const BirthDateRegistration = () => {
     const { name, value } = target;
     setNewUser((prev) => ({
       ...prev,
-      birthdate: {
-        ...prev.birthdate,
+      birthDate: {
+        ...prev.birthDate,
         [name]: value,
       },
     }));
@@ -57,14 +57,18 @@ const BirthDateRegistration = () => {
 
   const mutation = useMutation({
     mutationFn: (email) => {
-      return axios.post("http://localhost:4000/api/auth/email_otp", { email });
+      return axios.post("http://localhost:3000/api/v1/auth/send_otp_email", {
+        user: { email },
+      });
     },
-    onSuccess: ({ data }) => console.log(data),
+    onSuccess: ({ data }) => {
+      console.log(data);
+      setStep((p) => p + 1);
+    },
   });
 
   const handleClick = () => {
     mutation.mutate(newUser.email);
-    setStep((p) => p + 1);
   };
   console.log(newUser);
 

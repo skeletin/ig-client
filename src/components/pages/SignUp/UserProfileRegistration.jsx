@@ -85,8 +85,6 @@ const UserProfileRegistrationInput = ({ label }) => {
     if (label === "email") mutation.mutate(newUser);
   };
 
-  console.log(isValue);
-
   return (
     <>
       <div className="relative border-[rgb(219,219,219)] border w-full rounded-[3px]">
