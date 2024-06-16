@@ -1,28 +1,19 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./components/pages/SignUp";
-import { createContext, useEffect, useState } from "react";
-
-const AuthContext = createContext({});
+import Home from "./components/pages/Home";
+import AppWrapper from "./components/AppWrapper";
 
 function App() {
-  const [authUser, setAuthUser] = useState(null);
-
-  useEffect(() => {}, []);
-
   return (
-    <AuthContext.Provider
-      value={{
-        authUser,
-        setAuthUser,
-      }}
-    >
-      <Router>
-        <Routes>
-          <Route path="signup" element={<SignUp />} />
-        </Routes>
-      </Router>
-    </AuthContext.Provider>
+    <Router>
+      <Routes>
+        <Route path="" element={<AppWrapper />}>
+          <Route index path="" element={<Home />} />
+        </Route>
+        <Route path="signup" element={<SignUp />} />
+      </Routes>
+    </Router>
   );
 }
 
