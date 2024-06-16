@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
-import context from "../contexts/context";
+import React from "react";
 
 const MessengerIcon = () => {
-  const { ThemeContext } = context;
-  const { color } = useContext(ThemeContext);
   return (
     <svg
       aria-label="Messenger"
       className="x1lliihq x1n2onr6 x5n08af"
-      fill={color}
+      fill="white"
       height="24"
       role="img"
       viewBox="0 0 24 24"
@@ -18,7 +15,7 @@ const MessengerIcon = () => {
       <path
         d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z"
         fill="none"
-        stroke={color}
+        stroke="white"
         strokeMiterlimit="10"
         strokeWidth="1.739"
       ></path>

@@ -1,17 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import context from "./contexts/context";
 import Icon from "./Icon";
 
 const AppWrapper = () => {
-  const { ThemeContext } = context;
-  const { bgColor, borderTopColor } = useContext(ThemeContext);
-
   return (
-    <div className={`flex flex-col h-full w-full bg-[${bgColor}]`}>
+    <div className={`flex flex-col h-full w-full bg-[black]`}>
       <Outlet />
       <nav
-        className={`flex justify-center space-x-[1.9rem] bg-[${bgColor}]  border-t border-[${borderTopColor}]`}
+        className={`flex justify-center space-x-[1.9rem] bg-[black]  border-t border-[#282828]`}
       >
         <Link to="/">
           <Icon name="Home" />

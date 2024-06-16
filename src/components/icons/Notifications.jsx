@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
-import context from "../contexts/context";
+import React from "react";
 
 const Notifications = () => {
-  const { ThemeContext } = context;
-  const { color } = useContext(ThemeContext);
   return (
     <svg
       aria-label="Notifications"
       className="w-[36px] h-[48px]"
-      fill={color}
+      fill="white"
       height="24"
       role="img"
       viewBox="0 0 24 24"

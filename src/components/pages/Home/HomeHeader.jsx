@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
-import context from "../../contexts/context";
+import React from "react";
 import InstagramLogo from "../../icons/InstagramLogo";
 import { DownChevron } from "../../icons/DownChevron";
 import Notifications from "../../icons/Notifications";
 import Search from "../../icons/Search";
 
 const HomeHeader = () => {
-  const { ThemeContext } = context;
-  const { color, borderBottomColor } = useContext(ThemeContext);
   return (
     <div
-      className={`flex items-center w-full border-b border-[${borderBottomColor}] py-3 px-4 max-h-[61px] max-w-full`}
+      className={`flex items-center w-full border-b border-[#282828] py-3 px-4 max-h-[61px] max-w-full`}
     >
       <div className="flex items-center space-x-2">
         <InstagramLogo />

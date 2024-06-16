@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
-import context from "../contexts/context";
+import React from "react";
 
 export const HomeIcon = () => {
-  const { ThemeContext } = context;
-  const { color } = useContext(ThemeContext);
   return (
     <svg
       aria-label="Home"
       className="x1lliihq x1n2onr6 x5n08af"
-      fill={color}
+      fill="white"
       height="24"
       role="img"
       viewBox="0 0 24 24"
