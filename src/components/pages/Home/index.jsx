@@ -6,16 +6,16 @@ import axios from "axios";
 const Home = () => {
   const { data } = useQuery({
     queryKey: ["suggested-users"],
-    queryFn: function () {
-      return axios.get("./users.json");
+    queryFn: async function () {
+      const { data } = await axios.get("./users.json");
+      return data;
     },
   });
 
-  const { data: userData } = data;
-  const { users } = userData;
-  console.log(users);
   return (
-    <div className={`flex flex-col h-full bg-[black] text-[white]`}>
+    <div
+      className={`flex flex-col h-full bg-[black] text-[white] overflow-auto`}
+    >
       <HomeHeader />
       <div className="flex flex-col pt-7 px-4">
         <span
@@ -23,7 +23,7 @@ const Home = () => {
         >
           Suggested for you
         </span>
-        <SuggestedUsersContainer users={[]} />
+        <SuggestedUsersContainer users={data || []} />
       </div>
     </div>
   );

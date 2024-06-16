@@ -4,7 +4,7 @@ import Icon from "./Icon";
 
 const AppWrapper = () => {
   return (
-    <div className={`flex flex-col h-full w-full bg-[black]`}>
+    <div className={`flex flex-col h-full w-full bg-[black] overflow-hidden`}>
       <Outlet />
       <nav
         className={`flex justify-center space-x-[1.9rem] bg-[black]  border-t border-[#282828]`}
