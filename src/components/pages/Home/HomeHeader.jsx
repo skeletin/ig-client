@@ -1,4 +1,3 @@
-import React from "react";
 import InstagramLogo from "../../icons/InstagramLogo";
 import { DownChevron } from "../../icons/DownChevron";
 import Notifications from "../../icons/Notifications";
@@ -7,7 +6,7 @@ import Search from "../../icons/Search";
 const HomeHeader = () => {
   return (
     <div
-      className={`flex items-center w-full border-b border-[#282828] py-3 px-4 max-h-[61px] max-w-full`}
+      className={`flex items-center w-full border-b border-[#282828] py-3 px-4 max-h-[61px] max-w-full sticky top-0 bg-black`}
     >
       <div className="flex items-center space-x-2">
         <InstagramLogo />

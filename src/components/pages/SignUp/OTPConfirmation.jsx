@@ -4,35 +4,39 @@ import Typography from "../../Typography";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import snakecasify from "../../../helpers/snakecasify";
+import useAuth from "../../../hooks/useAuth";
 
 const OTPConfirmation = () => {
   const { setStep, newUser } = useSignUpContext();
+  const { storeToken } = useAuth();
   const [OTP, setOTP] = useState({ passcode: "" });
 
   const mutation = useMutation({
     mutationFn: (userData) => {
-      return axios.post("http://localhost:3000/api/v1/auth/verify_email", userData);
+      return axios.post(
+        "http://localhost:3000/api/v1/auth/verify_email",
+        userData
+      );
     },
-
-    onSuccess: (data) => {
-      console.log(data)
-    }
+    onSuccess: ({ data }) => {
+      const { data: token } = data;
+      storeToken(token);
+    },
   });
 
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const { birthDate } = newUser;
     const userData = {
       ...newUser,
       ...OTP,
       birthDate: `${birthDate.year}-${birthDate.month}-${birthDate.day}`,
     };
-
     mutation.mutate({
       user: snakecasify(userData),
-    })
-  }
-  console.log(OTP)
+    });
+  };
+
   return (
     <div className="flex flex-col items-center">
       <img
@@ -65,7 +69,9 @@ const OTPConfirmation = () => {
         type="click"
         onClick={handleClick}
       >
-        <span className={`${OTP.passcode.length === 6 ? "" : "opacity-50"} `}>Next</span>
+        <span className={`${OTP.passcode.length === 6 ? "" : "opacity-50"} `}>
+          Next
+        </span>
       </button>
       <button
         onClick={() => setStep((p) => p - 1)}

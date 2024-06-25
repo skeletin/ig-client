@@ -6,9 +6,6 @@ const SuggestedUsersContainer = ({ users }) => {
       {users.map((user) => {
         return <SuggestedUserCard key={user.fullName} {...user} />;
       })}
-      {users.map((user) => {
-        return <SuggestedUserCard key={user.fullName} {...user} />;
-      })}
     </div>
   );
 };

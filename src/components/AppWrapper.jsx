@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import Icon from "./Icon";
 
@@ -24,7 +23,9 @@ const AppWrapper = () => {
         <Link to="/direct/inbox">
           <Icon name="Messenger" />
         </Link>
-        <Icon name="Explore" />
+        <Link to="/profile">
+          <Icon name="Explore" />
+        </Link>
       </nav>
     </div>
   );
