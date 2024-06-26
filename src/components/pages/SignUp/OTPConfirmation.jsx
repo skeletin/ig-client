@@ -20,6 +20,7 @@ const OTPConfirmation = () => {
     },
     onSuccess: ({ data }) => {
       const { data: token } = data;
+      console.log(token);
       storeToken(token);
     },
   });

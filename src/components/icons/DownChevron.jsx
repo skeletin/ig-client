@@ -1,6 +1,4 @@
-import React from "react";
-
-export const DownChevron = () => {
+const DownChevron = () => {
   return (
     <svg
       aria-label="Down chevron icon"
@@ -16,3 +14,5 @@ export const DownChevron = () => {
     </svg>
   );
 };
+
+export default DownChevron;
