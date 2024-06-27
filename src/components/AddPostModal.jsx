@@ -8,6 +8,10 @@ import MediaGallery from "./icons/MediaGallery";
 import Emoji from "./icons/Emoji";
 import Location from "./icons/Location";
 import DownChevron from "./icons/DownChevron";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import shareLoading from "../assets/shareLoading.gif";
+import shareComplete from "../assets/shareComplete.gif";
 
 export const AddPostModal = ({ setIsOpen }) => {
   const input = useRef();
@@ -15,6 +19,25 @@ export const AddPostModal = ({ setIsOpen }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [next, setNext] = useState(false);
   const [caption, setCaption] = useState("");
+
+  const { mutate, isPending, isSuccess } = useMutation({
+    mutationFn: async (newPost) => {
+      return (
+        await axios.post(
+          "http://localhost:3000/api/v1/upload/photos",
+          newPost,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+      ).data;
+    },
+    onMutate: () => {
+      setNext(false);
+    },
+  });
 
   const handleUpload = () => {
     input.current.click();
@@ -31,12 +54,17 @@ export const AddPostModal = ({ setIsOpen }) => {
 
   const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append("file", file);
-    console.log(formData.get("file"));
+    formData.append("post[image]", file);
+    formData.append("post[caption]", caption);
+    mutate(formData);
   };
 
   const handleNext = () => {
     setNext(true);
+  };
+
+  const goBack = () => {
+    setNext(false);
   };
 
   return (
@@ -49,34 +77,57 @@ export const AddPostModal = ({ setIsOpen }) => {
       </button>
       <div
         className={`bg-[#262626] rounded-[12px] max-h-[176px] min-h-[391px] min-w-[348px] h-full overflow-hidden max-w-[900px] transition-all duration-500 ease-in-out ${
-          next ? "w-full min-w-[600px]" : "w-[348px]"
+          next ? "w-full min-w-[600px]" : "w-[300px]"
         }`}
       >
-        <AddPostModalHeader previewUrl={previewUrl} handleNext={handleNext} />
-        <div
-          className={`relative flex flex-col justify-center items-center flex-1 min-h-[90%]`}
-        >
-          <Media fill={"white"} />
-          <div className="leading-[25px] text-[whitesmoke] text-[20px] font-normal mt-3">
-            Drag photos and videos here
-          </div>
-          <button onClick={handleSubmit}>submit</button>
-          <button
-            onClick={handleUpload}
-            type="button"
-            className="bg-[#0095f6] text-white text-[14px] py-[6px] px-[16px] font-semibold rounded-[8px] mt-5"
-          >
-            Select from computer
-          </button>{" "}
-          {file && (
-            <ImageContainer
-              previewUrl={previewUrl}
-              next={next}
-              caption={caption}
-              setCaption={setCaption}
+        <AddPostModalHeader
+          previewUrl={previewUrl}
+          handleNext={handleNext}
+          next={next}
+          goBack={goBack}
+          handleSubmit={handleSubmit}
+          isSuccess={isSuccess}
+        />
+        {isPending ? (
+          <div className="flex flex-col justify-center items-center flex-1 min-h-[90%]">
+            <img
+              className="w-[96px] h-[96px] object-cover"
+              src={shareLoading}
             />
-          )}
-        </div>
+          </div>
+        ) : !isPending && isSuccess ? (
+          <div className="flex flex-col justify-center items-center flex-1 min-h-[90%]">
+            <img
+              className="w-[96px] h-[96px] object-cover"
+              src={shareComplete}
+            />
+          </div>
+        ) : (
+          <div
+            className={`relative flex flex-col justify-center items-center flex-1 min-h-[90%]`}
+          >
+            <Media fill={"white"} />
+            <div className="leading-[25px] text-[whitesmoke] text-[20px] font-normal mt-3">
+              Drag photos and videos here
+            </div>
+            <button onClick={handleSubmit}>submit</button>
+            <button
+              onClick={handleUpload}
+              type="button"
+              className="bg-[#0095f6] text-white text-[14px] py-[6px] px-[16px] font-semibold rounded-[8px] mt-5"
+            >
+              Select from computer
+            </button>{" "}
+            {file && (
+              <ImageContainer
+                previewUrl={previewUrl}
+                next={next}
+                caption={caption}
+                setCaption={setCaption}
+              />
+            )}
+          </div>
+        )}
       </div>
       <form
         onSubmit={handleSubmit}
@@ -98,21 +149,39 @@ export const AddPostModal = ({ setIsOpen }) => {
   );
 };
 
-const AddPostModalHeader = ({ previewUrl, handleNext }) => {
+const AddPostModalHeader = ({
+  previewUrl,
+  handleNext,
+  next,
+  goBack,
+  handleSubmit,
+  isSuccess,
+}) => {
   return previewUrl ? (
     <div className="flex items-center py-2.5 px-4">
-      <button>
-        <Back fill={"white"} />
-      </button>
+      {isSuccess ? null : (
+        <button onClick={goBack}>
+          <Back fill={"white"} />
+        </button>
+      )}
       <span className="font-semibold text-[whitesmoke] text-[16px] leading-[24px] w-full">
-        Crop
+        {isSuccess ? "Post Shared" : next ? "Create new post" : "Crop"}
       </span>
-      <button
-        onClick={handleNext}
-        className="font-semibold text-[.875rem] text-[#0095F6] leading-[18px] hover:text-white"
-      >
-        Next
-      </button>
+      {isSuccess ? null : next ? (
+        <button
+          onClick={handleSubmit}
+          className="font-semibold text-[.875rem] text-[#0095F6] leading-[18px] hover:text-white"
+        >
+          Share
+        </button>
+      ) : (
+        <button
+          onClick={handleNext}
+          className="font-semibold text-[.875rem] text-[#0095F6] leading-[18px] hover:text-white"
+        >
+          Next
+        </button>
+      )}
     </div>
   ) : (
     <div className="border-b border-[#363636] py-2">
