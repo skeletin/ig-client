@@ -1,6 +1,6 @@
 import useAuth from "../../../hooks/useAuth";
-import { DownChevron } from "../../icons/DownChevron";
-import { Options } from "../../icons/Options";
+import DownChevron from "../../icons/DownChevron";
+import Options from "../../icons/Options";
 import Threads from "../../icons/Threads";
 
 const ProfileHeader = () => {

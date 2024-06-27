@@ -1,5 +1,5 @@
 import InstagramLogo from "../../icons/InstagramLogo";
-import { DownChevron } from "../../icons/DownChevron";
+import DownChevron from "../../icons/DownChevron";
 import Notifications from "../../icons/Notifications";
 import Search from "../../icons/Search";
 

@@ -1,6 +1,6 @@
 import useAuth from "../../../hooks/useAuth";
 import Link from "../../icons/Link";
-import { Options } from "../../icons/Options";
+import Options from "../../icons/Options";
 import ReelsArchive from "./ReelsArchive";
 
 const ProfileInformation = () => {
