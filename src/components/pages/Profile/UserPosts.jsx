@@ -1,6 +1,8 @@
 import Posts from "../../icons/Posts";
+import ReelsIcon from "../../icons/ReelsIcon";
 import Saved from "../../icons/Saved";
 import Tagged from "../../icons/Tagged";
+import PostGrid from "./PostGrid";
 
 const UserPosts = () => {
   return (
@@ -24,13 +26,16 @@ const UserPosts = () => {
           <Posts fill="#a8a8a8" />
         </div>
         <div className="flex justify-center w-1/3 border-t border-[#262626] py-2.5">
+          <ReelsIcon fill="#a8a8a8" />
+        </div>
+        <div className="flex justify-center w-1/3 border-t border-[#262626] py-2.5">
           <Saved fill="#a8a8a8" />
         </div>
         <div className="flex justify-center w-1/3 border-t border-[#262626] py-2.5">
           <Tagged fill="#a8a8a8" />
         </div>
       </div>
-      <div></div>
+      <PostGrid />
     </div>
   );
 };

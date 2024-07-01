@@ -15,11 +15,15 @@ function App() {
   return <AppSwitch />;
 }
 
+function AppSwitch() {
+  const { authUser } = useAuth();
+  return <Router>{authUser ? <AppRouter /> : <AuthRouter />}</Router>;
+}
+
 function AuthRouter() {
   return (
     <Routes>
       <Route path="signup" element={<SignUp />} />
-      <Route path="*" element={<Navigate to="/signup" />} />
     </Routes>
   );
 }
@@ -29,16 +33,11 @@ function AppRouter() {
     <Routes>
       <Route path="/" element={<AppWrapper />}>
         <Route index path="/" element={<Home />} />
-        <Route index path="profile" element={<Profile />} />
+        <Route path=":username" element={<Profile />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
-}
-
-function AppSwitch() {
-  const { authUser } = useAuth();
-  return <Router>{authUser ? <AppRouter /> : <AuthRouter />}</Router>;
 }
 
 export default App;

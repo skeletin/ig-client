@@ -1,4 +1,3 @@
-import React from "react";
 import MessengerIcon from "./icons/MessengerIcon";
 import ExploreIcon from "./icons/ExploreIcon";
 import NewPostIcon from "./icons/NewPostIcon";
@@ -17,7 +16,7 @@ const Icon = ({ name }) => {
       case "Home":
         return <HomeIcon />;
       case "Reels":
-        return <ReelsIcon />;
+        return <ReelsIcon fill={"white"} />;
     }
   };
 
