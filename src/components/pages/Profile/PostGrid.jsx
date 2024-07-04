@@ -1,10 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import {
-  useParams,
-  Link,
-  useOutletContext,
-  useNavigate,
-} from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import axios from "axios";
 
 const PostGrid = () => {

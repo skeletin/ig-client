@@ -110,7 +110,6 @@ export const AddPostModal = ({ setIsOpen }) => {
             <div className="leading-[25px] text-[whitesmoke] text-[20px] font-normal mt-3">
               Drag photos and videos here
             </div>
-            <button onClick={handleSubmit}>submit</button>
             <button
               onClick={handleUpload}
               type="button"
