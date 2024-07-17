@@ -4,7 +4,7 @@ import UserPosts from "./UserPosts";
 
 const Profile = () => {
   return (
-    <div className="w-full h-full overflow-auto">
+    <div className="w-full h-full overflow-auto md:order-2">
       <ProfileHeader />
       <ProfileInformation />
       <UserPosts />

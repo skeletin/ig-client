@@ -28,32 +28,32 @@ const PostModal = ({ post, setIsPostModalOpen }) => {
         initial={{ scale: 1.09, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ ease: "circInOut", duration: 0.15 }}
-        className="flex flex-col rounded-b-lg  md:flex-row md:rounded-lg md:h-[450px]"
+        className="relative flex flex-col rounded-b-lg md:static md:flex-row md:rounded-lg md:h-[450px]"
       >
         <div className="flex justify-center items-center h-[419px] w-[335px] md:h-full">
           <img className="object-cover w-full h-full " src={imageUrl} />
         </div>
-        <div className="md:flex md:flex-col w-[405px] md:h-full">
-          <div className="md:border-b md:border-[#282828] md:flex md:justify-between md:items-center md:rounded-b md:rounded-l md:py-[14px] md:pl-[16px] md:pr-[16px] md:bg-black">
-            <div className="flex">
+        <div className="md:flex md:flex-col md:w-[405px] md:h-full">
+          <div className="absolute -top-14 flex items-center justify-between px-4 w-full md:static md:border-b md:border-[#282828] md:flex md:justify-between md:items-center md:rounded-b md:rounded-l md:py-[14px] md:pl-[16px] md:pr-[16px] md:bg-black">
+            <div className="flex w-full">
               <div className="w-[42px] h-[42px] overflow-hidden rounded-full bg-black p-0.5 border">
                 <img
                   className="h-full w-full object-cover rounded-full"
                   src={ju}
                 />
               </div>
-              <div className="md:flex md:flex-col md:text-[whitesmoke] md:text-left md:ml-2">
+              <div className="hidden md:flex md:flex-col md:text-[whitesmoke] md:text-left md:ml-2">
                 <div className="md:text-[14px] md:font-semibold">
                   {username}
                 </div>
                 <div className="md:text-[12px]">{year}</div>
               </div>
             </div>
-            <div>
+            <div className="">
               <MoreOptions fill={"white"} />
             </div>
           </div>
-          <div className="md:bg-black md:h-[230px] md:w-full md:flex md:flex-col md:justify-center md:text-[whitesmoke] md:border-b md:border-[#282828]">
+          <div className="hidden md:bg-black md:h-[230px] md:w-full md:flex md:flex-col md:justify-center md:text-[whitesmoke] md:border-b md:border-[#282828]">
             <div className="md:text-[24px] md:font-bold">No Comments yet.</div>
             <div className="md:text-[14px]">Start the conversation.</div>
           </div>
@@ -91,7 +91,7 @@ const PostModal = ({ post, setIsPostModalOpen }) => {
               <span className="text-[12px] text-[#A8A8A8]">May 25</span>
             </div>
           </div>
-          <form className="md:bg-black md:flex md:items-center md:px-4 md:flex-grow md:py-5 md:border-t md:border-[#282828]">
+          <form className="hidden md:bg-black md:flex md:items-center md:px-4 md:flex-grow md:py-5 md:border-t md:border-[#282828]">
             <div className="mr-4">
               <Emoji fill={"white"} height={"24"} width={"24"} />
             </div>
