@@ -2,7 +2,7 @@ import Typography from "./Typography";
 
 const RegistrationFooter = () => {
   return (
-    <div className="flex flex-col mt-3">
+    <div className="flex flex-col mt-4">
       <Typography cs={"text-sm"}>Get the app.</Typography>
       <div className="flex mt-4 space-x-2">
         <img
