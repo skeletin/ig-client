@@ -20,6 +20,7 @@ const SignUp = () => {
     },
   });
   const [step, setStep] = useState(0);
+  console.log(step);
 
   const registrations = [
     <UserProfileRegistration key={1} />,

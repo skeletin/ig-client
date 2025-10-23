@@ -61,9 +61,8 @@ const BirthDateRegistration = () => {
         user: { email },
       });
     },
-    onSuccess: ({ data }) => {
-      console.log(data);
-      setStep((p) => p + 1);
+    onSuccess: () => {
+      setStep((prevStep) => prevSte2 + 1);
     },
   });
 

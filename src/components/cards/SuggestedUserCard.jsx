@@ -17,7 +17,7 @@ const SuggestedUserCard = ({ imageUrl, fullName, username }) => {
           </span>
         </div>
       </div>
-      <button className="text-white bg-[#0095F6] py-[7px] px-[16px] rounded-[8px] self-center font-semibold text-[14px] leading-[18px] text-ellipsis w-auto">
+      <button className="text-white bg-[#0095F6] py-[7px] px-[16px] rounded-[8px] self-center font-semibold text-[14px] leading-[18px] text-ellipsis w-auto hover:bg-[#0064d1]">
         <div className="flex items-start justify-start px-[4px] overflow-x-visible overflow-y-visible">
           Follow
         </div>

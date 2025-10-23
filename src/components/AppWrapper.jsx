@@ -5,7 +5,6 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import PostModal from "./PostModal";
 import Ig from "./icons/IG";
-import Search from "./icons/Search";
 
 const AppWrapper = () => {
   const { authUser } = useAuth();
@@ -62,10 +61,10 @@ const AppWrapper = () => {
             <Icon name="Messenger" />
           </Link>
           <Link
-            className="order-6 flex items-center justify-center w-1/6 md:w-full md:flex md:justify-center md:h-[48px]"
+            className="order-6 flex items-center justify-center w-[48px] md:w-full md:flex md:justify-center md:h-[48px]"
             to={`/${username}`}
           >
-            <div className="rounded-full overflow-hidden object-cover">
+            <div className="rounded-full overflow-hidden object-cover border">
               <img className="w-[24px] h-[24px]" src="/src/assets/ju.jpg" />
             </div>
           </Link>

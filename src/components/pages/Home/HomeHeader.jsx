@@ -18,7 +18,7 @@ const HomeHeader = () => {
             placeholder="Search"
             className="rounded-[8px] bg-[#262626] px-[16px] py-[9px] text-[16px] text-[#f5f5f5] focus:outline-none w-[17rem] "
           />
-          <Search />
+          {/* <Search /> */}
         </div>
       </div>
       <Notifications />
